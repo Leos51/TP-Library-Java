@@ -1,10 +1,10 @@
-package model.person;
+package model.user;
 
-public class Person {
+public class User {
     private String firstName;
     private String lastName;
 
-    Person(String firstName, String lastName) {
+    User(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }

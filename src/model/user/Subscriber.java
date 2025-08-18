@@ -1,14 +1,14 @@
-package model.person;
+package model.user;
 
 import java.time.LocalDate;
 
 import static utils.Validator.isValidEmail;
 
-public class User extends Person {
+public class Subscriber extends User {
     private String email;
     private LocalDate registrationDate ;
 
-    User(String firstName, String lastName, String email) {
+    Subscriber(String firstName, String lastName, String email) {
         super(firstName, lastName);
         this.email = email;
         this.registrationDate = LocalDate.now();

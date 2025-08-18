@@ -1,11 +1,11 @@
-package model.person;
+package model.user;
 
 import java.util.UUID;
 
-public class Librarian extends Person {
+public class Librarian extends User {
     final private String ID;
 
-    Librarian(String firstName, String lastName) {
+    public Librarian(String firstName, String lastName) {
         super(firstName, lastName);
         this.ID = UUID.randomUUID().toString();
     }
