@@ -1,24 +1,22 @@
-package model;
+package model.book;
 
-import java.util.UUID;
-
-public class Librarian {
+public class Author {
     private String firstName;
     private String lastName;
-    final private String ID;
 
-    Librarian(String firstName, String lastName) {
+
+
+    Author(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.ID = UUID.randomUUID().toString();
     }
+
     public String getFirstName() {
         return firstName;
-
     }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-
     }
 
     public String getLastName() {
@@ -29,8 +27,5 @@ public class Librarian {
         this.lastName = lastName;
     }
 
-    public String getId() {
-        return ID;
-    }
 
 }

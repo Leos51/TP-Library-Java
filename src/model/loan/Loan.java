@@ -1,4 +1,7 @@
-package model;
+package model.loan;
+
+import model.book.Book;
+import model.person.User;
 
 import java.time.LocalDate;
 

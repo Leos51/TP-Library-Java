@@ -1,4 +1,4 @@
-package model;
+package model.book;
 
 public class Book {
     String title;

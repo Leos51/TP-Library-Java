@@ -1,12 +1,10 @@
-package model;
+package model.person;
 
-public class Author {
+public class Person {
     private String firstName;
     private String lastName;
 
-
-
-    Author(String firstName, String lastName) {
+    Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -14,7 +12,6 @@ public class Author {
     public String getFirstName() {
         return firstName;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -22,7 +19,6 @@ public class Author {
     public String getLastName() {
         return lastName;
     }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
