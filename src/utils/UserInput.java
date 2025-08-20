@@ -16,8 +16,7 @@ public class UserInput {
 
     public static int getIntValue(String msg) {
         System.out.println(msg);
-        int value = sc.nextInt();
-        return value ;
+        return sc.nextInt();
     }
 
     public static double getDoubleValue(String msg){

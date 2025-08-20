@@ -1,27 +1,27 @@
 package model.loan;
 
 import model.book.Book;
-import model.person.User;
+import model.user.Subscriber;
 
 import java.time.LocalDate;
 
 public class Loan {
     LocalDate loanStartDate;
     LocalDate loanEndDate;
-    User user;
+    Subscriber subscriber;
     Book book;
 
 
-    Loan(User user, Book book) {
+    public Loan(Subscriber subscriber, Book book) {
         this.loanStartDate = LocalDate.now();
-        this.loanEndDate = LocalDate.now();
-        this.user = user;
+        this.loanEndDate = this.loanStartDate.plusDays(7);
+        this.subscriber = subscriber;
         this.book = book;
     }
-    Loan(User user, Book book,  LocalDate loanStartDate, LocalDate loanEndDate) {
+    public Loan(Subscriber subscriber, Book book, LocalDate loanStartDate, LocalDate loanEndDate) {
         this.loanStartDate = loanStartDate;
         this.loanEndDate = loanEndDate;
-        this.user = user;
+        this.subscriber = subscriber;
         this.book = book;
     }
 
@@ -41,12 +41,12 @@ public class Loan {
         this.loanEndDate = loanEndDate;
     }
 
-    public User getUser() {
-        return user;
+    public Subscriber getUser() {
+        return subscriber;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(Subscriber subscriber) {
+        this.subscriber = subscriber;
     }
 
     public Book getBook() {
@@ -55,5 +55,10 @@ public class Loan {
 
     public void setBook(Book book) {
         this.book = book;
+    }
+
+    @Override
+    public String toString() {
+        return getBook().getTitle() + " - Debut du pret : " + getLoanStartDate() + " - Fin du pret : " + getLoanEndDate();
     }
 }
