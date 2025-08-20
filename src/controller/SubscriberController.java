@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 import static model.lists.books.Books.books;
 import static model.lists.users.Subscribers.subscribers;
-import static view.Menu.displayMenu;
+import static view.Menu.displayMainMenu;
 
 public class SubscriberController {
 
@@ -25,6 +25,6 @@ public class SubscriberController {
         for (Subscriber subscriber : subscribers){
             System.out.println(subscriber.toString());
         }
-        displayMenu();
+        displayMainMenu();
     }
 }

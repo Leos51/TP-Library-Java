@@ -18,9 +18,9 @@ public class Loan {
         this.subscriber = subscriber;
         this.book = book;
     }
-    public Loan(Subscriber subscriber, Book book, LocalDate loanStartDate, LocalDate loanEndDate) {
+    public Loan(Subscriber subscriber, Book book, LocalDate loanStartDate) {
         this.loanStartDate = loanStartDate;
-        this.loanEndDate = loanEndDate;
+        this.loanEndDate = this.loanStartDate.plusDays(7);
         this.subscriber = subscriber;
         this.book = book;
     }

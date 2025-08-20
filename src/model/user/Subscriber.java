@@ -27,11 +27,10 @@ public class Subscriber extends User {
     }
 
     public void setEmail(String email) {
-        if(isValidEmail(email)){
-            this.email = email;
-        }else{
-            System.err.println("Invalid Email");
+        if (!isValidEmail(email)) {
+            throw new IllegalArgumentException("Email invalide");
         }
+            this.email = email;
     }
 
     public String getRegistrationDate() {

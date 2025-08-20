@@ -26,4 +26,11 @@ public class UserInput {
         return value;
 
     }
+
+    public static long getLongValue(String msg) {
+        System.out.println(msg);
+        long value = sc.nextLong();
+        sc.nextLine();
+        return value;
+    }
 }

@@ -28,8 +28,26 @@ public class Books {
             return null;
     }
 
-    public static void removeBook(String title) {
-        Book book = findBookByTitle(title);
+    public static Book findBookByAuthor(String author) {
+        for (Book book : books) {
+            if (book.getAuthor().equals(author)) {
+                return book;//penser a creer une liste qui retournera la liste des livre du meme auteur
+            }
+        }
+        return null;
+    }
+
+    public static Book findBookByISBN(String isbn) {
+        for (Book book : books) {
+            if (book.getIsbn().equals(isbn)) {
+                return book;
+            }
+        }
+        return null;
+    }
+
+    public static void removeBook(String isbn) {
+        Book book = findBookByISBN(isbn);
         books.remove(book);
     }
 

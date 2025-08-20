@@ -17,7 +17,7 @@ public class Subscribers {
         this.subscribers = subscribers;
     }
 
-    public void addSubscriber(Subscriber subscriber){
+    public static void addSubscriber(Subscriber subscriber){
         subscribers.add(subscriber);
     }
 
