@@ -20,20 +20,20 @@ public class UserInput {
     }
 
 
-    public static double getDoubleValue(String msg){
-        System.out.println(msg);
-        double value = sc.nextDouble();
-        sc.nextLine();
-        return value;
+//    public static double getDoubleValue(String msg){
+//        System.out.println(msg);
+//        double value = sc.nextDouble();
+//        sc.nextLine();
+//        return value;
+//
+//    }
 
-    }
-
-    public static long getLongValue(String msg) {
-        System.out.println(msg);
-        long value = sc.nextLong();
-        sc.nextLine();
-        return value;
-    }
+//    public static long getLongValue(String msg) {
+//        System.out.println(msg);
+//        long value = sc.nextLong();
+//        sc.nextLine();
+//        return value;
+//    }
 
     public static String capitalize(String word) {
         word = word.toLowerCase();
