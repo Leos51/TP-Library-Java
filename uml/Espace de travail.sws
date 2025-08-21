@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?PowerDesigner signature="Workspace" version="16.7.1.6488"?>
+<!-- Veuillez ne pas modifier ce fichier -->
+
+<Workspace>
+	<Local Expanded="Yes">
+		<Model Expanded="Yes" ID="{1743F399-311B-46A8-B053-4810C6DEBF62}" Loaded="No" Name="Diagramme de classes_1" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="Diagramme de classes_1.moo"/>
+		<Model Expanded="Yes" ID="{49BD9F32-6F68-454A-B616-4C18A957A907}" Loaded="No" Name="Projet_1" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="/Users/DEV01/Documents/Projet_1/Projet_1.prj"/>
+		<Model Expanded="Yes" ID="{01153309-20BD-4DEE-956C-8DD805595C64}" Name="Définition de cas d&#39;utilisation_1" Selected="Yes" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="Définition de cas d&#39;utilisation_1.moo"/>
+	</Local>
+	<BrowserModule Name="Repository"/>
+</Workspace>

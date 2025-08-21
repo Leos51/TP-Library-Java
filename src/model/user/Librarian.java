@@ -14,4 +14,9 @@ public class Librarian extends User {
         return ID;
     }
 
+    @Override
+    public String toString(){
+        return super.toString() + " - ID: " + getId();
+    }
+
 }
