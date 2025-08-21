@@ -4,6 +4,8 @@ import model.lists.users.Subscribers;
 import model.user.Subscriber;
 import view.Menu;
 
+import java.time.LocalDate;
+
 public class SubscriberController {
 
     public static void seedSubscriberData() {
@@ -12,6 +14,8 @@ public class SubscriberController {
         Subscribers.addSubscriber(new Subscriber("Sophie", "Bernard", "sophie.bernard@email.com"));
         Subscribers.addSubscriber(new Subscriber("Karim", "Bouchard", "karim.bouchard@email.com"));
         Subscribers.addSubscriber(new Subscriber("Léa", "Fontaine", "lea.fontaine@email.com"));
+        Subscribers.addSubscriber(new Subscriber("Recto", "Verso", "recto.verso@co.fr"));
+        Subscribers.addSubscriber(new Subscriber("Book","Lecteur","book.lecteur@mail.com", LocalDate.parse("2020-04-20")));
     }
 
     public static void displaySubscribers(){

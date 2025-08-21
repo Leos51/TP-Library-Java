@@ -152,20 +152,24 @@ public class Menu  {
             if(!Validator.isValidEmail(subscriberEmail)){
                 throw new IllegalArgumentException("Saisie email incorrect");
             }
-            if(Subscribers.findSubscriberByEmail(subscriberEmail)==null){
-                throw new IllegalArgumentException("L'utilisateur n'existe pas");
-            }
             Subscriber subscriber = Subscribers.findSubscriberByEmail(subscriberEmail);
+            if(subscriber == null){
+                throw new IllegalArgumentException("L'utilisateur n'existe pas. Faire l'enregistrement d'un nouvel abonné");
+            }
 
             String isbn = UserInput.getStringValue("isbn du livre: ");
             if(!Validator.isValidISBN(isbn)){
                 throw new IllegalArgumentException("Saisie isbn incorrect");
             }
-            if(Books.findBookByISBN(isbn)==null){
-                throw new IllegalArgumentException("Le livre n'est pas enregistré");
-            }
             Book book = Books.findBookByISBN(isbn);
+            if(book==null){
+                throw new IllegalArgumentException("Le livre n'existe pas en BDD");
+            }
+            if(!book.isAvailable()){
+                throw new IllegalArgumentException("Le livre n'est pas en stock");
+            }
             Loans.addLoan(new Loan(subscriber, book));
+            book.decreaseStock();
         } catch (Exception e) {
             System.err.println("Erreur : " + e.getMessage());
         }finally {
@@ -181,7 +185,7 @@ public class Menu  {
             int quantity = Integer.parseInt(UserInput.getStringValue("Quantite du livre : "));
             Books.addBook(new Book(title, author, isbn, quantity));
             if(Books.findBookByISBN(isbn) == null){
-                throw new Exception("Erreur d'ajout.");
+                throw new Exception("Erreur lors de l'ajout. Recommencer");
             }
                 System.out.println("Le livre \"" + title + "\" a bien été ajouté.");
             }catch(Exception e){

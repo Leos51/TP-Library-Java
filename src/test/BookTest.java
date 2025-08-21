@@ -4,8 +4,12 @@ import model.book.Book;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static utils.UserInput.capitalize;
+
 class BookTest {
 
     Book book;
@@ -21,8 +25,20 @@ class BookTest {
     }
 
     @Test
-    void getTitle() {
+    public void testConstructeurArgsValide() throws Exception {
         assertEquals("Clean Code", book.getTitle());
+        assertEquals("Robert C. Martin", book.getAuthor());
+        assertEquals("9780132350884", book.getIsbn());
+        assertEquals(1, book.getQuantity());
+    }
+
+    @ParameterizedTest(name = "{0} : le setter fonctionne correctement")
+    @ValueSource(strings = {"Neo jero", " neojero", "NEOJERO ", "neoJero", "nJutr"} )
+    void setNomTest_Success(String title) throws Exception {
+
+        book.setTitle(title);
+        // Assert
+        assertEquals(title.trim(), book.getTitle());
     }
 
     @Test

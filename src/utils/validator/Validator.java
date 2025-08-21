@@ -2,7 +2,7 @@ package utils.validator;
 
 public class Validator {
 
-    static String wordRegex = "^[A-Za-z]{3,20}$";
+    static String wordRegex = "^[A-Za-z]+$";
 //    static String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
     static String emailRegex = "^((?!\\.)[\\w\\-_.]*[^.])(@\\w+)(\\.\\w+(\\.\\w+)?[^.\\W])$";
 
@@ -19,8 +19,10 @@ public class Validator {
     public static boolean isValidPositiveInt(int quantity) {
         return quantity >= 0;
     }
-    public static boolean isValidStockStatus(String stockStatus) {
-        return stockStatus.equals("inStock");
+
+
+    public static boolean isWordOnlyAlphabetic(String word) {
+        return word.matches(wordRegex);
     }
 
     public static boolean isValidString_min3_max20(String word) {

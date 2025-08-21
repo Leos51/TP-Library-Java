@@ -8,7 +8,6 @@ import java.util.List;
 public class Books {
     private static List<Book> books = new ArrayList<>();
 
-
     public static List<Book> getBooks() {
         return books;
     }

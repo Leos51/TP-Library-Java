@@ -44,6 +44,18 @@ public class Book {
     }
 
     public void setIsbn(String isbn) throws IllegalArgumentException {
+
+        if(isbn == null) {
+            throw new NullPointerException("Le isbn ne doit pas etre null");
+        }
+        // test valeur vide
+        if(isbn.isBlank() || isbn.isEmpty()) {
+            throw new IllegalArgumentException("Le isbn doit faire plus de 5 caracteres");
+        }
+        if(isbn.length() < 10) {
+            throw new IllegalArgumentException("Le isbn doit faire plus de 10 caracteres");
+        }
+
         if(!Validator.isValidISBN(isbn)){
             throw new IllegalArgumentException("Le ISBN n'est pas valide");
         }

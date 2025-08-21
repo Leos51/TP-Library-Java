@@ -34,4 +34,10 @@ public class UserInput {
         sc.nextLine();
         return value;
     }
+
+    public static String capitalize(String word) {
+        word = word.toLowerCase();
+        return word.substring(0, 1).toUpperCase() + word.substring(1);
+
+    }
 }

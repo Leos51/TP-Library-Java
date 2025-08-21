@@ -27,6 +27,9 @@ public class Subscriber extends User {
     }
 
     public void setEmail(String email) {
+        email = email
+                .trim()
+                .toLowerCase();
         if (!isValidEmail(email)) {
             throw new IllegalArgumentException("Email invalide");
         }

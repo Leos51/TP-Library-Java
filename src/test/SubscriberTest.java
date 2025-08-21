@@ -6,6 +6,8 @@ import model.user.User;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.time.LocalDate;
 
@@ -29,22 +31,33 @@ class SubscriberTest {
         subscriber2 = null;
     }
 
+
     @Test
     void testGetEmail() {
         assertEquals("leo.rain@gmail.com", subscriber1.getEmail());
     }
 
-    @Test
-    void testSetEmail() {
-        subscriber1.setEmail("prenom.nom@live.fr");
-        assertEquals("prenom.nom@live.fr", subscriber1.getEmail());
-        assertNotEquals("leo.rain@gmail.com",  subscriber1.getEmail());
-    }
+
 
     @Test
     void getRegistrationDate() {
         assertEquals(format(LocalDate.now()), subscriber1.getRegistrationDate());
         assertEquals(format(LocalDate.now().plusDays(8)), subscriber2.getRegistrationDate());
+    }
+
+    @ParameterizedTest(name = "{0} : le setter fonctionne correctement")
+    @ValueSource(strings = {"leo@mail.com", " link103@live.fr", "reD51@orange.fr"} )
+    void testSetEmail_Success(String email) {
+        subscriber1.setEmail(email);
+        assertEquals(email, subscriber1.getEmail());
+    }
+
+
+    @ParameterizedTest(name = "{0} : le setter leve une exception correctement")
+    @ValueSource(strings = {"Verso", " 1link103@live.fr", "reD51@"} )
+    void testSetEmail_Fail(String email) {
+        assertThrows(Exception.class, () -> subscriber1.setEmail(email));
+
     }
 
     @Test
