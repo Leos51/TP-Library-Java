@@ -1,5 +1,6 @@
 package model.book;
 
+import utils.RegexPatterns;
 import utils.validator.Validator;
 
 public class Book {
@@ -7,6 +8,10 @@ public class Book {
     private String author;
     private String isbn;
     private int quantity;
+
+    public Book() {
+
+    }
 
 
     public Book(String title, String author, String isbn,  int quantity) {
@@ -22,8 +27,13 @@ public class Book {
     }
 
     public void setTitle(String title) {
-        if(title.isBlank() || title.length() < 5) {
-            throw new IllegalArgumentException("Le titre doit faire plus de 5 caracteres");
+        title = title.trim();
+        if(title.isBlank() || title.length() < 2) {
+            throw new IllegalArgumentException("Le titre doit faire plus de 2 caracteres");
+        }
+        if(!Validator.isValidBookTitle(title)) {
+            throw new IllegalArgumentException("Le titre n'est pas valide");
+
         }
         this.title = title;
     }

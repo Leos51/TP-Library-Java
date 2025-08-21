@@ -1,19 +1,22 @@
 package utils.validator;
 
+import model.lists.books.Books;
+import utils.RegexPatterns;
+
+import java.util.regex.Pattern;
+
 public class Validator {
 
-    static String wordRegex = "^[A-Za-z]+$";
-//    static String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
-    static String emailRegex = "^((?!\\.)[\\w\\-_.]*[^.])(@\\w+)(\\.\\w+(\\.\\w+)?[^.\\W])$";
-
-    static String isbnRegex = "^\\d{10}|\\d{13}$";
+    public static boolean isValidName(String name){
+        return name.matches(RegexPatterns.NAME_REGEX);
+    }
 
     public static boolean isValidEmail(String email) {
-        return email.matches(emailRegex);
+        return email.matches(RegexPatterns.EMAIL_REGEX);
     }
 
     public static boolean isValidISBN(String isbn) {
-        return isbn.matches(isbnRegex);
+        return isbn.matches(RegexPatterns.ISBN_REGEX);
     }
 
     public static boolean isValidPositiveInt(int quantity) {
@@ -21,15 +24,8 @@ public class Validator {
     }
 
 
-    public static boolean isWordOnlyAlphabetic(String word) {
-        return word.matches(wordRegex);
-    }
-
-    public static boolean isValidString_min3_max20(String word) {
-        if(word == null || !word.matches(wordRegex)) {
-            return false;
-        }
-        return true;
+    public static boolean isValidBookTitle(String title) {
+        return title.matches(RegexPatterns.BOOK_TITLE_REGEX);
     }
 
 

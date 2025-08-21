@@ -36,16 +36,16 @@ public class Menu  {
                 System.err.println("Choix invalide.");
             }
             switch (choice) {
-                case 1 -> displaySuscriberMenu();
+                case 1 -> displaySubscriberMenu();
                 case 2 -> displayBookMenu();
                 case 3 -> displayLoanMenu();
-                case 0 -> System.exit(0);
+                case 0 -> exitApp();
                 default -> System.out.println("Choix invalide.");
             }
         }while(choice != 0 && choice != 1 && choice != 2 && choice != 3);
     }
 
-    public static void displaySuscriberMenu(){
+    public static void displaySubscriberMenu(){
         System.out.println("---------------");
         System.out.println("Onglet Abonné");
         System.out.println("---------------");
@@ -63,7 +63,7 @@ public class Menu  {
             choice = UserInput.getIntValue("Votre Choix [1-2] ou [0] pour le menu principal : ");
             switch (choice) {
                 case 1 -> SubscriberController.displaySubscribers();
-                case 2 -> addSuscriberMenu();
+                case 2 -> addSubscriberMenu();
                 case 0 -> displayMainMenu();
                 default -> System.err.println("Choix invalide.");
             }
@@ -73,7 +73,7 @@ public class Menu  {
 
     public static void displayBookMenu(){
         System.out.println("---------------");
-        System.out.println("Onglet Livre");
+        System.out.println("\uD83D\uDCD6 Onglet Livre");
         System.out.println("---------------");
         System.out.println("1 - Afficher la liste des livres");
         System.out.println("2 - Enregistrer un nouveau livre");
@@ -119,15 +119,15 @@ public class Menu  {
     }
 
 
-    public static void addSuscriberMenu() {
+    public static void addSubscriberMenu() {
         try{
             System.out.println("--------------");
             String firstName = UserInput.getStringValue("Prenom de l'abonné : ");
-            if(!Validator.isValidString_min3_max20(firstName)){
+            if(!Validator.isValidName(firstName)){
                 throw new InputMismatchException("Le prenom est invalide. (3 à 20 caracteres)");
             }
             String lastName = UserInput.getStringValue("Nom de l'abonné : ");
-            if(!Validator.isValidString_min3_max20(lastName)){
+            if(!Validator.isValidName(lastName)){
                 throw new InputMismatchException("Le nom est invalide. (3 à 20 caracteres)");
             }
             String email = UserInput.getStringValue("Email : ");
@@ -140,7 +140,7 @@ public class Menu  {
         }catch(Exception e){
             System.err.println("Erreur : " + e.getMessage());
         }finally {
-            displaySuscriberMenu();
+            displaySubscriberMenu();
         }
 
     }
@@ -180,9 +180,18 @@ public class Menu  {
     public static void addBookMenu(){
         try{        System.out.println("--------------");
             String title = UserInput.getStringValue("Titre du livre : ");
+            if(!Validator.isValidBookTitle(title)){
+                throw new IllegalArgumentException("Saisie titre incorrect");
+            }
             String author = UserInput.getStringValue("Auteur du livre: ");
             String isbn = UserInput.getStringValue("isbn du livre: ");
+            if(!Validator.isValidISBN(isbn)){
+                throw new IllegalArgumentException("Saisie isbn incorrect");
+            }
             int quantity = Integer.parseInt(UserInput.getStringValue("Quantite du livre : "));
+            if(Validator.isValidPositiveInt(quantity)){
+                throw new IllegalArgumentException("Quantite invalide.");
+            }
             Books.addBook(new Book(title, author, isbn, quantity));
             if(Books.findBookByISBN(isbn) == null){
                 throw new Exception("Erreur lors de l'ajout. Recommencer");
@@ -195,6 +204,12 @@ public class Menu  {
                 displayBookMenu();
             }
 
+
+
+    }
+    private static void exitApp() {
+        System.out.println("Message de sortie a integrer");
+        System.exit(0);
     }
 
 
