@@ -58,7 +58,7 @@ public class Menu  {
 
     public static void choiceSuscriberMenu(){
         int choice;
-        int[] validChoices = {0, 1, 2};
+//        int[] validChoices = {0, 1, 2};
         do{
             choice = UserInput.getIntValue("Votre Choix [1-2] ou [0] pour le menu principal : ");
             switch (choice) {
@@ -82,7 +82,7 @@ public class Menu  {
     }
     public static void choiceBookMenu(){
         int choice;
-        int[] validChoices = {0, 1, 2};
+//        int[] validChoices = {0, 1, 2};
         do{
             choice = UserInput.getIntValue("Votre Choix [1-2] ou [0] pour le menu principal : ");
             switch (choice) {
@@ -104,7 +104,7 @@ public class Menu  {
         choiceLoanMenu();
     }
     public static void choiceLoanMenu() {
-        int[] validChoices = {0, 1, 2};
+//        int[] validChoices = {0, 1, 2};
         int choice;
         do {
             choice = UserInput.getIntValue("Votre Choix [1-2] ou [0] pour le menu principal : ");
@@ -149,8 +149,21 @@ public class Menu  {
         try{
             System.out.println("--------------");
             String subscriberEmail = UserInput.getStringValue("Email : ");
+            if(!Validator.isValidEmail(subscriberEmail)){
+                throw new IllegalArgumentException("Saisie email incorrect");
+            }
+            if(Subscribers.findSubscriberByEmail(subscriberEmail)==null){
+                throw new IllegalArgumentException("L'utilisateur n'existe pas");
+            }
             Subscriber subscriber = Subscribers.findSubscriberByEmail(subscriberEmail);
+
             String isbn = UserInput.getStringValue("isbn du livre: ");
+            if(!Validator.isValidISBN(isbn)){
+                throw new IllegalArgumentException("Saisie isbn incorrect");
+            }
+            if(Books.findBookByISBN(isbn)==null){
+                throw new IllegalArgumentException("Le livre n'est pas enregistré");
+            }
             Book book = Books.findBookByISBN(isbn);
             Loans.addLoan(new Loan(subscriber, book));
         } catch (Exception e) {

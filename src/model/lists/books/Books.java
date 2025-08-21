@@ -16,7 +16,7 @@ public class Books {
         this.books = books;
     }
     public static void addBook(Book book){
-        this.books.add(book);
+        books.add(book);
     }
 
     public static Book findBookByTitle(String title) {
@@ -28,14 +28,14 @@ public class Books {
             return null;
     }
 
-    public static Book findBookByAuthor(String author) {
-        for (Book book : books) {
-            if (book.getAuthor().equals(author)) {
-                return book;//penser a creer une liste qui retournera la liste des livre du meme auteur
-            }
-        }
-        return null;
-    }
+//    public static Book findBookByAuthor(String author) {
+//        for (Book book : books) {
+//            if (book.getAuthor().equals(author)) {
+//                return book;//penser a creer une liste qui retournera la liste des livre du meme auteur
+//            }
+//        }
+//        return null;
+//    }
 
     public static Book findBookByISBN(String isbn) {
         for (Book book : books) {
@@ -46,9 +46,9 @@ public class Books {
         return null;
     }
 
-    public static void removeBook(String isbn) {
-        Book book = findBookByISBN(isbn);
-        books.remove(book);
-    }
+//    public static void removeBook(String isbn) {
+//        Book book = findBookByISBN(isbn);
+//        books.remove(book);
+//    }
 
 }

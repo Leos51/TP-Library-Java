@@ -1,6 +1,5 @@
 package model.book;
 
-import model.loan.Loan;
 import utils.validator.Validator;
 
 public class Book {
@@ -9,11 +8,6 @@ public class Book {
     private String isbn;
     private int quantity;
 
-
-    private enum stockStatus {
-        IN_STOCK,
-        OUT_STOCK
-    }
 
     public Book(String title, String author, String isbn,  int quantity) {
         this.title = title;
@@ -28,11 +22,8 @@ public class Book {
     }
 
     public void setTitle(String title) {
-        if(title.isEmpty()) {
-            throw new IllegalArgumentException("Le titre ne peut pas etre vide");
-        }
-        if(!Validator.isValidString_min3_max20(title)) {
-            throw new IllegalArgumentException("Titre invalide");
+        if(title.isBlank() || title.length() < 5) {
+            throw new IllegalArgumentException("Le titre doit faire plus de 5 caracteres");
         }
         this.title = title;
     }
@@ -42,6 +33,9 @@ public class Book {
     }
 
     public void setAuthor(String author) {
+        if(author.isBlank() || author.length() < 5) {
+            throw new IllegalArgumentException("Le author doit faire plus de 5 caracteres");
+        }
         this.author = author;
     }
 
