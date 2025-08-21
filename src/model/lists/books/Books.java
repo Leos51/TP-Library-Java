@@ -6,16 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Books {
-    public static List<Book> books = new ArrayList<>();
+    private static List<Book> books = new ArrayList<>();
 
 
-    public List<Book> getBooks() {
+    public static List<Book> getBooks() {
         return books;
     }
     public void setBooks(List<Book> books) {
         this.books = books;
     }
-    public void addBook(Book book){
+    public static void addBook(Book book){
         this.books.add(book);
     }
 

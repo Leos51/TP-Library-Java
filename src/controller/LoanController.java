@@ -6,8 +6,6 @@ import model.lists.users.Subscribers;
 import model.loan.Loan;
 import view.Menu;
 
-import static model.lists.loans.Loans.loans;
-
 
 
 public class LoanController {
@@ -24,7 +22,7 @@ public class LoanController {
     public static void displayLoans(){
         System.out.println("Prêts en cours");
         System.out.println("----------------");
-       for(Loan loan : Loans.loans){
+       for(Loan loan : Loans.getLoans()){
            System.out.println(loan);
        }
         Menu.displayMainMenu();

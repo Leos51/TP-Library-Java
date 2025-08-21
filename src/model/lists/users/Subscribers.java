@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Subscribers {
-    public static List<Subscriber> subscribers = new ArrayList<>();;
+    private static List<Subscriber> subscribers = new ArrayList<>();;
 
 
-    public List<Subscriber> getSubscribers(){
+    public static List<Subscriber> getSubscribers(){
         return subscribers;
     }
 

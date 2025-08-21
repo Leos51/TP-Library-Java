@@ -166,7 +166,7 @@ public class Menu  {
             String author = UserInput.getStringValue("Auteur du livre: ");
             String isbn = UserInput.getStringValue("isbn du livre: ");
             int quantity = Integer.parseInt(UserInput.getStringValue("Quantite du livre : "));
-            Books.books.add(new Book(title, author, isbn, quantity));
+            Books.addBook(new Book(title, author, isbn, quantity));
             if(Books.findBookByISBN(isbn) == null){
                 throw new Exception("Erreur d'ajout.");
             }

@@ -9,6 +9,7 @@ public class Book {
     private String isbn;
     private int quantity;
 
+
     private enum stockStatus {
         IN_STOCK,
         OUT_STOCK
@@ -63,6 +64,21 @@ public class Book {
             throw new IllegalArgumentException("La quantité n'est pas valide");
         }
         this.quantity = quantity;
+    }
+
+    public boolean isAvailable() {
+        return quantity > 0;
+    }
+
+    public void decreaseStock() {
+        if(!isAvailable()) {
+            throw new IllegalArgumentException("le livre n'est pas en stock");
+        }
+            quantity--;
+    }
+
+    public void increaseStock() {
+        quantity++;
     }
 
 

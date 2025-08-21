@@ -8,9 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Loans {
-    public static List<Loan> loans =  new ArrayList<>();
+    private static List<Loan> loans =  new ArrayList<>();
 
 
+    public static List<Loan> getLoans(){
+        return loans;
+    }
     public static void addLoan(Loan loan) {
         loans.add(loan);
     }
