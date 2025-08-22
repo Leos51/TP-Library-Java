@@ -54,6 +54,7 @@ public class Loan {
     }
 
     public void setBook(Book book) {
+        book.decreaseStock();
         this.book = book;
     }
 

@@ -3,7 +3,7 @@ package controller;
 import static controller.BookController.seedBookData;
 import static controller.LoanController.seedLoansData;
 import static controller.SubscriberController.seedSubscriberData;
-import static view.Menu.displayMainMenu;
+import static view.MainMenu.displayMainMenu;
 
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or

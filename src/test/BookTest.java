@@ -33,18 +33,12 @@ class BookTest {
     }
 
     @ParameterizedTest(name = "{0} : le setter fonctionne correctement")
-    @ValueSource(strings = {"Neo jero", " neojero", "NEOJERO ", "neoJero", "nJutr"} )
-    void setNomTest_Success(String title) throws Exception {
+    @ValueSource(strings = {"Effective Java", " 1984", "LEOS ", "ça", "Ca"} )
+    void setTitleTest_Success(String title) throws Exception {
 
         book.setTitle(title);
         // Assert
         assertEquals(title.trim(), book.getTitle());
-    }
-
-    @Test
-    void setTitle() {
-        book.setTitle("Effective Java");
-        assertEquals("Effective Java", book.getTitle());
     }
 
     @Test

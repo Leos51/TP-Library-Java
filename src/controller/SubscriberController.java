@@ -2,7 +2,7 @@ package controller;
 
 import model.lists.users.Subscribers;
 import model.user.Subscriber;
-import view.Menu;
+import view.MainMenu;
 
 import java.time.LocalDate;
 
@@ -24,6 +24,6 @@ public class SubscriberController {
         for (Subscriber subscriber : Subscribers.getSubscribers()){
             System.out.println(subscriber.toString());
         }
-        Menu.displayMainMenu();
+        MainMenu.displayMainMenu();
     }
 }

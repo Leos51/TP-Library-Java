@@ -4,8 +4,7 @@ import model.lists.books.Books;
 import model.lists.loans.Loans;
 import model.lists.users.Subscribers;
 import model.loan.Loan;
-import view.Menu;
-
+import view.MainMenu;
 
 
 public class LoanController {
@@ -25,6 +24,6 @@ public class LoanController {
        for(Loan loan : Loans.getLoans()){
            System.out.println(loan);
        }
-        Menu.displayMainMenu();
+        MainMenu.displayMainMenu();
     }
 }

@@ -19,6 +19,14 @@ public class UserInput {
         return sc.nextInt();
     }
 
+    public static int getParseIntValue(String msg) {
+        System.out.println(msg);
+        String str = getStringValue(msg);
+        int num = Integer.parseInt(str);
+        return num;
+
+    }
+
 
 //    public static double getDoubleValue(String msg){
 //        System.out.println(msg);

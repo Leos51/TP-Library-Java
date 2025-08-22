@@ -3,7 +3,7 @@ package controller;
 
 import model.book.Book;
 import model.lists.books.Books;
-import view.Menu;
+import view.MainMenu;
 
 
 public class BookController {
@@ -22,7 +22,7 @@ public class BookController {
         for(Book book : Books.getBooks()){
             System.out.println(book.toString());
         }
-        Menu.displayMainMenu();
+        MainMenu.displayMainMenu();
     }
 
 
