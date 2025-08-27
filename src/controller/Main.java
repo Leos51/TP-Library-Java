@@ -1,5 +1,7 @@
 package controller;
 
+import utils.exception.SaisieException;
+
 import static controller.BookController.seedBookData;
 import static controller.LoanController.seedLoansData;
 import static controller.SubscriberController.seedSubscriberData;
@@ -14,7 +16,7 @@ public class Main {
             m.run();
         }
 
-        public void run(){
+        public void run() {
         seedSubscriberData();
         seedBookData();
         seedLoansData();

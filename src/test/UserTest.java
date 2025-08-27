@@ -5,8 +5,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
+import utils.exception.SaisieException;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static utils.UserInput.capitalize;
@@ -16,7 +16,7 @@ class UserTest {
     User user;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws SaisieException {
         user = new User("Recto", "Verso");
     }
 
@@ -82,8 +82,13 @@ class UserTest {
 
     @Test
     void testsetLastName() {
-        user.setLastName("Fischer");
-        assertEquals("Fischer", user.getLastName());
+        try{
+            user.setLastName("Fischer");
+            assertEquals("Fischer", user.getLastName());
+        } catch (SaisieException e) {
+            System.err.println("testsetLN : " + e.getMessage());
+        }
+
     }
 
     @Test

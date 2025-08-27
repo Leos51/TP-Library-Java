@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import utils.exception.SaisieException;
 
 import java.time.LocalDate;
 
@@ -21,8 +22,13 @@ class SubscriberTest {
 
     @BeforeEach
     void setUp() {
-        subscriber1 = new Subscriber("Leo", "Rain", "leo.rain@gmail.com");
-        subscriber2 = new Subscriber("Recto", "Verso", "recto.verso@simplemail.com", LocalDate.now().plusDays(8));
+        try{
+            subscriber1 = new Subscriber("Leo", "Rain", "leo.rain@gmail.com");
+            subscriber2 = new Subscriber("Recto", "Verso", "recto.verso@simplemail.com", LocalDate.now().plusDays(8));
+        } catch (SaisieException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @AfterEach

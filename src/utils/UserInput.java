@@ -16,7 +16,13 @@ public class UserInput {
 
     public static int getIntValue(String msg) {
         System.out.println(msg);
-        return sc.nextInt();
+        String str = getStringValue(msg);
+        try{
+            return Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            System.err.println("Erreur : entrée invalide. Veuillez saisir un entier.");
+            return -1;
+        }
     }
 
     public static int getParseIntValue(String msg) {

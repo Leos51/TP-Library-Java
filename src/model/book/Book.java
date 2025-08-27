@@ -1,6 +1,7 @@
 package model.book;
 
 import utils.RegexPatterns;
+import utils.exception.SaisieException;
 import utils.validator.Validator;
 
 public class Book {
@@ -14,11 +15,11 @@ public class Book {
     }
 
 
-    public Book(String title, String author, String isbn,  int quantity) {
-        this.title = title;
-        this.author = author;
-        this.isbn = isbn;
-        this.quantity = quantity;
+    public Book(String title, String author, String isbn,  int quantity) throws SaisieException {
+        this.setTitle(title);
+        this.setAuthor(author);
+        this.setIsbn(isbn);
+        this.setQuantity(quantity);
 
     }
 
@@ -28,13 +29,13 @@ public class Book {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(String title) throws SaisieException {
         title = title.trim();
         if(title.isBlank() || title.length() < 2) {
-            throw new IllegalArgumentException("Le titre doit faire plus de 2 caracteres");
+            throw new SaisieException("Le titre doit faire plus de 2 caracteres");
         }
         if(!Validator.isValidBookTitle(title)) {
-            throw new IllegalArgumentException("Le titre n'est pas valide");
+            throw new SaisieException("Le titre n'est pas valide");
 
         }
         this.title = title;
@@ -44,9 +45,9 @@ public class Book {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(String author) throws SaisieException {
         if(author.isBlank() || author.length() < 5) {
-            throw new IllegalArgumentException("Le author doit faire plus de 5 caracteres");
+            throw new SaisieException("Le author doit faire plus de 5 caracteres");
         }
         this.author = author;
     }
@@ -55,21 +56,21 @@ public class Book {
         return isbn;
     }
 
-    public void setIsbn(String isbn) throws IllegalArgumentException {
+    public void setIsbn(String isbn) throws SaisieException {
 
         if(isbn == null) {
-            throw new NullPointerException("Le isbn ne doit pas etre null");
+            throw new SaisieException("Le isbn ne doit pas etre null");
         }
         // test valeur vide
         if(isbn.isBlank() || isbn.isEmpty()) {
-            throw new IllegalArgumentException("Le isbn doit faire plus de 5 caracteres");
+            throw new SaisieException("Le isbn doit faire plus de 5 caracteres");
         }
         if(isbn.length() < 10) {
-            throw new IllegalArgumentException("Le isbn doit faire plus de 10 caracteres");
+            throw new SaisieException("Le isbn doit faire plus de 10 caracteres");
         }
 
         if(!Validator.isValidISBN(isbn)){
-            throw new IllegalArgumentException("Le ISBN n'est pas valide");
+            throw new SaisieException("Le ISBN n'est pas valide");
         }
         this.isbn = isbn;
     }
@@ -77,9 +78,9 @@ public class Book {
     public int getQuantity() {
         return quantity;
     }
-    public void setQuantity(int quantity) throws IllegalArgumentException {
+    public void setQuantity(int quantity) throws SaisieException {
         if(!Validator.isValidPositiveInt(quantity)){
-            throw new IllegalArgumentException("La quantité n'est pas valide");
+            throw new SaisieException("La quantité n'est pas valide");
         }
         this.quantity = quantity;
     }
@@ -88,9 +89,9 @@ public class Book {
         return quantity > 0;
     }
 
-    public void decreaseStock() {
+    public void decreaseStock() throws SaisieException {
         if(!isAvailable()) {
-            throw new IllegalArgumentException("le livre n'est pas en stock");
+            throw new SaisieException("le livre n'est pas en stock");
         }
             quantity--;
     }

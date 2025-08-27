@@ -1,11 +1,13 @@
 package model.user;
 
+import utils.exception.SaisieException;
+
 import java.util.UUID;
 
 public class Librarian extends User {
     final private String ID;
 
-    public Librarian(String firstName, String lastName) {
+    public Librarian(String firstName, String lastName) throws SaisieException {
         super(firstName, lastName);
         this.ID = UUID.randomUUID().toString();
     }

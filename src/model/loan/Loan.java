@@ -2,6 +2,7 @@ package model.loan;
 
 import model.book.Book;
 import model.user.Subscriber;
+import utils.exception.SaisieException;
 
 import java.time.LocalDate;
 
@@ -13,16 +14,16 @@ public class Loan {
 
 
     public Loan(Subscriber subscriber, Book book) {
-        this.loanStartDate = LocalDate.now();
-        this.loanEndDate = this.loanStartDate.plusDays(7);
-        this.subscriber = subscriber;
-        this.book = book;
+        this.setLoanStartDate(LocalDate.now());
+        this.setLoanEndDate(this.getLoanStartDate().plusDays(7));
+        this.setUser(subscriber);
+        this.setBook(book);
     }
     public Loan(Subscriber subscriber, Book book, LocalDate loanStartDate) {
-        this.loanStartDate = loanStartDate;
-        this.loanEndDate = this.loanStartDate.plusDays(7);
-        this.subscriber = subscriber;
-        this.book = book;
+        this.setLoanStartDate(loanStartDate);
+        this.setLoanEndDate(this.getLoanStartDate().plusDays(7));
+        this.setUser(subscriber);
+        this.setBook(book);
     }
 
     public LocalDate getLoanStartDate() {
@@ -54,8 +55,13 @@ public class Loan {
     }
 
     public void setBook(Book book) {
-        book.decreaseStock();
-        this.book = book;
+        try{
+            book.decreaseStock();
+            this.book = book;
+        }catch(SaisieException e){
+            System.err.println("Saisie exception : " + e.getMessage());
+        }
+
     }
 
     @Override

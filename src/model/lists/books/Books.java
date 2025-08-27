@@ -45,9 +45,9 @@ public class Books {
         return null;
     }
 
-//    public static void removeBook(String isbn) {
-//        Book book = findBookByISBN(isbn);
-//        books.remove(book);
-//    }
+    public static void removeBook(String isbn) {
+        Book book = findBookByISBN(isbn);
+        books.remove(book);
+    }
 
 }

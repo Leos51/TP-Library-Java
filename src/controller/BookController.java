@@ -3,17 +3,23 @@ package controller;
 
 import model.book.Book;
 import model.lists.books.Books;
+import utils.exception.SaisieException;
 import view.MainMenu;
 
 
 public class BookController {
 
     public static void seedBookData() {
-        Books.addBook(new Book("1984", "George Orwell", "9780451524935" , 2));
-        Books.addBook(new Book("Le Petit Prince", "Antoine de Saint-Exupéry", "9782070612758", 5));
-        Books.addBook(new Book("To Kill a Mockingbird", "Harper Lee", "9780061120084", 1));
-        Books.addBook(new Book("L'Étranger", "Albert Camus", "9782070360024", 1));
-        Books.addBook(new Book("The Hobbit", "J.R.R. Tolkien", "9780547928227" ,1));
+        try {
+            Books.addBook(new Book("Le Petit Prince", "Antoine de Saint-Exupéry", "9782070612758", 5));
+            Books.addBook(new Book("To Kill a Mockingbird", "Harper Lee", "9780061120084", 1));
+            Books.addBook(new Book("L'Étranger", "Albert Camus", "9782070360024", 1));
+            Books.addBook(new Book("The Hobbit", "J.R.R. Tolkien", "9780547928227", 1));
+        } catch (SaisieException e) {
+            System.out.println("Erreur InitBook : " + e.getMessage());
+
+        }
+
     }
 
     public static void displayBooks(){

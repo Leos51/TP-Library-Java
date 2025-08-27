@@ -1,5 +1,7 @@
 package model.user;
 
+import utils.exception.SaisieException;
+
 import java.time.LocalDate;
 
 import static utils.DateFormat.format;
@@ -9,16 +11,16 @@ public class Subscriber extends User {
     private String email;
     private LocalDate registrationDate;
 
-    public Subscriber(String firstName, String lastName, String email) {
+    public Subscriber(String firstName, String lastName, String email) throws SaisieException {
         super(firstName, lastName);
-        this.email = email;
-        this.registrationDate = LocalDate.now();
+        this.setEmail(email);
+        this.setRegistrationDate(LocalDate.now());
     }
 
-    public Subscriber(String firstName, String lastName, String email, LocalDate registrationDate) {
+    public Subscriber(String firstName, String lastName, String email, LocalDate registrationDate) throws SaisieException {
         super(firstName, lastName);
-        this.email = email;
-        this.registrationDate = registrationDate;
+        this.setEmail(email);
+        this.setRegistrationDate(registrationDate);
     }
 
 

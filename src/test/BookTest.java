@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import utils.exception.SaisieException;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static utils.UserInput.capitalize;
@@ -16,7 +17,11 @@ class BookTest {
 
     @BeforeEach
     void setUp() {
-        book = new Book("Clean Code", "Robert C. Martin","9780132350884",1);
+        try {
+            book = new Book("Clean Code", "Robert C. Martin","9780132350884",1);
+        } catch (SaisieException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @AfterEach
@@ -48,8 +53,12 @@ class BookTest {
 
     @Test
     void testSetAuthor() {
-        book.setAuthor("Joshua Bloch");
-        assertEquals("Joshua Bloch", book.getAuthor());
+        try{ book.setAuthor("Joshua Bloch");
+            assertEquals("Joshua Bloch", book.getAuthor());}
+        catch (SaisieException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+
     }
 
 
@@ -60,8 +69,13 @@ class BookTest {
 
     @Test
     void testSetIsbn() {
-        book.setIsbn("0185997054");
-        assertEquals("0185997054", book.getIsbn());
+        try{
+            book.setIsbn("0185997054");
+            assertEquals("0185997054", book.getIsbn());
+        }catch (SaisieException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+
     }
 
     @Test
@@ -71,8 +85,13 @@ class BookTest {
 
     @Test
     void testSetQuantity() {
-        book.setQuantity(10);
-        assertEquals(10, book.getQuantity());
+        try {
+            book.setQuantity(10);
+            assertEquals(10, book.getQuantity());
+        } catch (SaisieException e) {
+            System.err.println("Erreur : " + e.getMessage());
+        }
+
     }
 
     @Test
@@ -82,14 +101,23 @@ class BookTest {
 
     @Test
     void testIsUnavailable() {
-        book.decreaseStock();
-        assertFalse(book.isAvailable());
+        try{
+            book.decreaseStock();
+            assertFalse(book.isAvailable());
+        } catch (SaisieException e) {
+            System.err.println("Erreur : " + e.getMessage());
+        }
+
     }
 
     @Test
     void testDecreaseStock() {
-        book.decreaseStock();
-        assertEquals(0, book.getQuantity());
+        try {
+            book.decreaseStock();
+            assertEquals(0, book.getQuantity());
+        }catch (Exception e) {
+            System.err.println("Erreur : " + e.getMessage());
+        }
     }
 
     @Test

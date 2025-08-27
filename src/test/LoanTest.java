@@ -6,6 +6,7 @@ import model.user.Subscriber;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import utils.exception.SaisieException;
 
 import java.time.LocalDate;
 
@@ -19,9 +20,13 @@ class LoanTest {
 
     @BeforeEach
     void setUp() {
-        subscriber = new Subscriber("prenom", "Nom", "email@email.fr");
-        user2 = new Subscriber("leo", "Dupont", "leodupont@mail.com");
-        book = new Book("Livre 1", "Auteur 1", "5154545045454545", 2);
+        try {
+            subscriber = new Subscriber("prenom", "Nom", "email@email.fr");
+            user2 = new Subscriber("leo", "Dupont", "leodupont@mail.com");
+            book = new Book("Livre 1", "Auteur 1", "5154545045454545", 2);
+        } catch (SaisieException e) {
+            throw new RuntimeException(e);
+        }
         loan = new Loan(subscriber,book);
 
     }
@@ -77,7 +82,12 @@ class LoanTest {
 
     @Test
     void testSetBook() {
-        Book book2 = new Book("L'épée de Verité", "Martin GoodKind", "1234567891",5);
+        Book book2 = null;
+        try {
+            book2 = new Book("L'épée de Verité", "Martin GoodKind", "1234567891",5);
+        } catch (SaisieException e) {
+            throw new RuntimeException(e);
+        }
         loan.setBook(book2);
         assertTrue(loan.getBook().equals(book2));
         assertEquals("L'épée de Verité", loan.getBook().getTitle());
