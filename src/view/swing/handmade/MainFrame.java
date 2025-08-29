@@ -28,8 +28,8 @@ public class MainFrame extends JFrame {
 
         JPanel tabsPanel = new JPanel();
         BookTab bookTab = new BookTab();
-        JPanel loanPanel = new LoanPanel();
-        JPanel subscriberPanel = new SubscriberPanel();
+        LoanPanel loanPanel = new LoanPanel();
+        SubscriberPanel subscriberPanel = new SubscriberPanel();
 
         JTabbedPane tabs = new JTabbedPane();
 

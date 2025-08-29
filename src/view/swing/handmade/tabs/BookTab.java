@@ -5,6 +5,8 @@ import view.swing.handmade.bookpanels.AddBookPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class BookTab extends JPanel {
 //    MainFrame mainFrame;
@@ -30,9 +32,13 @@ public class BookTab extends JPanel {
             addBookPanel.setVisible(true);
         });
 
-        editBookBtn.addActionListener(e -> {
-            editBookBtn.setText("XXXXXXXXX");
+        editBookBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                editBookBtn.setText(editBookBtn.getText() + "?" + e);
+            }
         });
+
+
 
 
     }

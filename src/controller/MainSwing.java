@@ -1,6 +1,7 @@
 package controller;
 
 import view.swing.handmade.MainFrame;
+import view.swing.uidesigner.MainFrameGUI;
 
 import javax.swing.*;
 
@@ -11,7 +12,10 @@ public class MainSwing {
         main.run();
     }
     private void run(){
-        initUI();
+//        initUI(); // crée manuellemnt
+
+
+        initUI_Designer(); //Crée avec uidesigner
 
     }
 
@@ -19,6 +23,13 @@ public class MainSwing {
         SwingUtilities.invokeLater(() -> {
             MainFrame mainFrame = new MainFrame();
             mainFrame.setVisible(true);
+        });
+    }
+
+    private void initUI_Designer(){
+        SwingUtilities.invokeLater(() -> {
+            MainFrameGUI mainFrameGUI = new MainFrameGUI();
+            mainFrameGUI.setVisible(true);
         });
     }
 }
